@@ -20,6 +20,14 @@ class MainActivity : AppCompatActivity() {
         webView.setBackgroundColor(Color.parseColor("#0D0E1C"))
         webView.settings.javaScriptEnabled = true
         webView.settings.domStorageEnabled = true
+        // Android WebView scales text/UI based on the system font size setting by
+        // default ("font boosting"). This inflates chip/button sizes past their
+        // grid cells, which is what causes menus to look larger than their
+        // background. Locking textZoom to 100 makes it render at a fixed scale
+        // regardless of the phone's accessibility font size setting.
+        webView.settings.textZoom = 100
+        webView.settings.loadWithOverviewMode = true
+        webView.settings.useWideViewPort = true
         webView.webViewClient = WebViewClient()
 
         // Edge-to-edge dark UI, matches in-app theme
